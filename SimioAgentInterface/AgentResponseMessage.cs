@@ -8,6 +8,7 @@ namespace SimioAgentInterface
 {
     public class AgentResponseMessage
     {
+        public bool IsNoOp { get; set; } = false;
         public double Action { get; set; }
     }
 }
