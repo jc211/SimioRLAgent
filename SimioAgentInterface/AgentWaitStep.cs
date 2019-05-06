@@ -49,7 +49,7 @@ namespace SimioAgentInterface
         /// </summary>
         public int NumberOfExits
         {
-            get { return 1; }
+            get { return 2; }
         }
 
         /// <summary>
@@ -175,8 +175,9 @@ namespace SimioAgentInterface
             context.ExecutionInformation.TraceInformation(responseMessage);
             (_actionProperty.GetState(context) as IRealState).Value = jsonresponse.Action;
             context.ReturnValue = jsonresponse.Action;
-            
-            return ExitType.FirstExit;
+
+            return (jsonresponse.IsNoOp) ? ExitType.AlternateExit : ExitType.FirstExit;
+            // ExitType.FirstExit;
         }
 
 
